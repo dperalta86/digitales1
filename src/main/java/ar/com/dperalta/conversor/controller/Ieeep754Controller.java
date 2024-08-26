@@ -21,7 +21,14 @@ public class Ieeep754Controller {
     }
 
     @PostMapping("/ieee")
-    public float ieee754ToFloat(@RequestBody String sign, @RequestBody String exponent, @RequestBody String mantissa) {
-        return ieeep754Service.ieee754ToFloat(sign, exponent, mantissa);
+    public ResponseEntity<Float> convertIeee754ToFloat(@RequestBody Map<String, String> request) {
+        String bits = request.get("bits");
+
+        if (bits.length() != 32 || !bits.matches("[01]+")) {
+            return ResponseEntity.badRequest().body(null); // Validación básica de la cadena de bits
+        }
+
+        Float result = ieeep754Service.convertIeee754ToFloat(bits);
+        return ResponseEntity.ok(result);
     }
 }

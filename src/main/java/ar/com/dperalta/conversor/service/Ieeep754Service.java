@@ -24,8 +24,11 @@ public class Ieeep754Service {
         return result;
     }
 
-    public float ieee754ToFloat(String sign, String exponent, String mantissa) {
-        int intBits = Integer.parseUnsignedInt(sign + exponent + mantissa, 2);
+    public float convertIeee754ToFloat(String bits) {
+        // Convertir la cadena de 32 bits a un entero sin signo
+        int intBits = Integer.parseUnsignedInt(bits, 2);
+
+        // Convertir el entero a float usando Float.intBitsToFloat()
         return Float.intBitsToFloat(intBits);
     }
 }
