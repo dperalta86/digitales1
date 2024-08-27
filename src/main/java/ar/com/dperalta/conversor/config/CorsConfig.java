@@ -15,9 +15,8 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("https://dperalta.com.ar/",
-                                "https://digitales1.dperalta.com.ar/",
-                                "https://digitales1.dperalta.com.ar/conversor",
-                                "https://digitales1.dperalta.com.ar/ieee754")
+                                "https://conversor.dperalta.com.ar/",
+                                "https://ieee754.dperalta.com.ar/")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
